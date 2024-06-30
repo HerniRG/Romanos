@@ -8,6 +8,8 @@ class RomanNumbers(Enum):
     C = 100
     D = 500
     M = 1000
+    V_ = 5000
+    X_ = 10000
 
 
 

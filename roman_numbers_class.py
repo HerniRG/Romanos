@@ -7,6 +7,10 @@ implementación de la clase RomanNumber
 class RomanNumber:
     def __init__(self, cadena):
         self.cadena = cadena
+        if isinstance(cadena, str):
+            self.roman_to_arab()
+        if isinstance(cadena, (int, float)):  
+            self.arab_to_roman()
 
     def roman_to_arab(self):
         roman = self.cadena
@@ -25,27 +29,12 @@ class RomanNumber:
                 print(f"Caracter {character} no está en ROMAN NUMBERS.")
                 break
         
-        # LA PRIMERA VEZ LO HE HECHO MUY ENREVESADO XD
-        # for character in roman:       
-        #     if index+1 < len(roman) and RomanNumbers[character].value < RomanNumbers[roman[index+1]].value :
-        #         arab = arab - acum - RomanNumbers[character].value
-        #         acum = 0
-        #     elif index+1 < len(roman) and RomanNumbers[character].value == RomanNumbers[roman[index+1]].value:
-        #         acum = acum + RomanNumbers[character].value
-        #     elif index+1 < len(roman) and RomanNumbers[character].value > RomanNumbers[roman[index+1]].value:
-        #         arab = arab + acum + RomanNumbers[character].value
-        #         acum = 0
-        #     elif index+1 >= len(roman):
-        #         arab = arab + acum + RomanNumbers[character].value
-        #     index += 1
-        # if acum != 0:
-        #     arab += acum
-
+       
         print(arab)
         return arab    
 
     def arab_to_roman(self):
-        arab = int(self.cadena)
+        arab = int(round(self.cadena))
         roman = ""
 
         for roman_letter in ArabicNumbers:
@@ -54,12 +43,8 @@ class RomanNumber:
                 arab -= roman_letter.value  # y restamos 1000 para que quede 987 y volver a trabajar con el número restante
 
         print(roman)
-        
-
-
-
-
-                
+        return roman
+                        
     def __str__(self) -> str:
         pass
 
@@ -67,5 +52,4 @@ class RomanNumber:
         pass
 
 
-a = RomanNumber(2)
-a.arab_to_roman()
+a = RomanNumber("IV")
