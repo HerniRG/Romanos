@@ -29,3 +29,31 @@ def test_arab_to_roman():
     assert RomanNumber(444).arab_to_roman() == "CDXLIV"
     assert RomanNumber(890).arab_to_roman() == "DCCCXC"
     assert RomanNumber(999).arab_to_roman() == "CMXCIX"
+
+def test_addition():
+    # Casos de suma
+    uno = RomanNumber(1)
+    dos = RomanNumber("II")
+    assert (uno + dos) == RomanNumber(3)
+    assert (uno + dos) == RomanNumber("III")
+
+def test_subtraction():
+    # Casos de resta
+    uno = RomanNumber(1)
+    dos = RomanNumber("II")
+    assert (dos - uno) == RomanNumber(1)
+    assert (dos - uno) == RomanNumber("I")
+
+def test_multiplication():
+    # Casos de multiplicación
+    uno = RomanNumber(1)
+    dos = RomanNumber("II")
+    assert (dos * 3) == RomanNumber(6)
+    assert (dos * 3) == RomanNumber("VI")
+
+def test_floor_division():
+    # Casos de división entera
+    grande = RomanNumber("MMM")
+    dos = RomanNumber("II")
+    assert (grande // dos) == RomanNumber(1500)
+    assert (grande // dos) == RomanNumber("MD")
