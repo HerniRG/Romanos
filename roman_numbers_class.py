@@ -46,10 +46,12 @@ class RomanNumber:
         return roman
                         
     def __str__(self) -> str:
-        pass
+        if isinstance(self.cadena, str):
+            arab_value = self.roman_to_arab()
+            return f"El número romano {self.cadena} es: {arab_value}."
+        if isinstance(self.cadena, (int, float)):  
+            roman_value = self.arab_to_roman()
+            return f"El número {self.cadena} es en romano: {roman_value}."
 
     def __repr__(self) -> str:
-        pass
-
-
-a = RomanNumber("IV")
+        return f"RomanNumber({self.cadena})"
