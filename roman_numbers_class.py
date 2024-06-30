@@ -74,6 +74,11 @@ class RomanNumber:
             suma = self.value + segundo_roman_number.value
             return RomanNumber(suma)
     
+    def __sub__(self, segundo_roman_number):
+        if isinstance(segundo_roman_number, RomanNumber):
+            resta = self.value - segundo_roman_number.value
+            return RomanNumber(resta)
+    
     def __mul__(self, segundo_roman_number):
         resultado = 0
 
@@ -87,6 +92,17 @@ class RomanNumber:
             resultado = RomanNumber(producto)
                 
         return resultado
+
+    def __floordiv__(self, segundo_roman_number):
+        result_value = 0
+        
+        if isinstance(segundo_roman_number, RomanNumber):
+            result_value = self.value // segundo_roman_number.value
+        elif isinstance(segundo_roman_number, (int, float)):
+            result_value = self.value // int(round(segundo_roman_number))
+        
+        
+        return RomanNumber(result_value)
 
     
     def __eq__(self, segundo_roman_number):
